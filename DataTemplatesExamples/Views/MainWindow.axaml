@@ -1,0 +1,38 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:DataTemplatesExamples.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:DataTemplatesXAMLExample.Models"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="DataTemplatesExamples.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="DataTemplatesExamples">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<Window.DataTemplates>
+
+		<DataTemplate DataType="{x:Type local:Student}">
+			<Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto">
+				<TextBlock Grid.Row="0" Grid.Column="0">First Name:</TextBlock>
+				<TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding FirstName}"/>
+				<TextBlock Grid.Row="1" Grid.Column="0">Last Name:</TextBlock>
+				<TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding LastName}"/>
+			</Grid>
+		</DataTemplate>
+
+		<DataTemplate DataType="{x:Type local:Teacher}">
+			<Grid ColumnDefinitions="Auto,4,Auto">
+				<TextBlock Grid.Row="0" Grid.Column="0">Professor</TextBlock>
+				<TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding LastName}"/>
+			</Grid>
+		</DataTemplate>
+
+	</Window.DataTemplates>
+
+	<ContentControl Content="{Binding Content}"/>
+
+</Window>
